@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Areeba's Portfolio</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+</head>
+<body>
+  <!-- Animated Background Particles -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <a href="#" class="nav-logo">
+      <span class="logo-accent">A</span>reeba
+    </a>
+    <div class="nav-links">
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#gallery" class="nav-link">Gallery</a>
+      <a href="#upload" class="nav-link">Upload</a>
+      <a href="#about" class="nav-link">About</a>
+    </div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="#home" class="mobile-nav-link">Home</a>
+    <a href="#gallery" class="mobile-nav-link">Gallery</a>
+    <a href="#upload" class="mobile-nav-link">Upload</a>
+    <a href="#about" class="mobile-nav-link">About</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <p class="hero-tagline fade-in">Welcome to my creative space</p>
+      <h1 class="hero-title fade-in">
+        <span class="hero-line">Visual</span>
+        <span class="hero-line accent">Portfolio</span>
+      </h1>
+      <p class="hero-description fade-in">
+        A curated collection of moments, stories, and art — captured through my lens.
+      </p>
+      <div class="hero-actions fade-in">
+        <a href="#gallery" class="btn btn-primary">
+          <span class="material-icons-round">collections</span>
+          Explore Gallery
+        </a>
+        <a href="#upload" class="btn btn-outline">
+          <span class="material-icons-round">cloud_upload</span>
+          Upload Media
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator">
+      <span class="material-icons-round">expand_more</span>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <section class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-number" id="stat-photos">0</span>
+      <span class="stat-label">Photos</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number" id="stat-videos">0</span>
+      <span class="stat-label">Videos</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number" id="stat-collections">0</span>
+      <span class="stat-label">Collections</span>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="section gallery-section" id="gallery">
+    <div class="section-header">
+      <p class="section-tagline fade-in">Browse My Work</p>
+      <h2 class="section-title fade-in">Gallery</h2>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="filter-tabs fade-in">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="photo">Photos</button>
+      <button class="filter-btn" data-filter="video">Videos</button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="gallery-grid" id="gallery-grid">
+      <!-- Items injected by JS -->
+    </div>
+
+    <div class="gallery-empty" id="gallery-empty">
+      <span class="material-icons-round">photo_library</span>
+      <h3>No media yet</h3>
+      <p>Upload your first photo or video to get started!</p>
+      <a href="#upload" class="btn btn-primary">
+        <span class="material-icons-round">add_photo_alternate</span>
+        Upload Now
+      </a>
+    </div>
+  </section>
+
+  <!-- Upload Section -->
+  <section class="section upload-section" id="upload">
+    <div class="section-header">
+      <p class="section-tagline fade-in">Add Your Work</p>
+      <h2 class="section-title fade-in">Upload Media</h2>
+    </div>
+
+    <div class="upload-container fade-in">
+      <div class="upload-dropzone" id="upload-dropzone">
+        <div class="dropzone-icon">
+          <span class="material-icons-round">cloud_upload</span>
+        </div>
+        <h3 class="dropzone-title">Drag & Drop your files here</h3>
+        <p class="dropzone-subtitle">or click to browse</p>
+        <p class="dropzone-formats">Supports: JPG, PNG, GIF, WEBP, MP4, WEBM, MOV</p>
+        <input type="file" id="file-input" multiple accept="image/*,video/*" hidden />
+      </div>
+
+      <!-- Upload Metadata Form -->
+      <div class="upload-form" id="upload-form" style="display: none;">
+        <div class="upload-preview-grid" id="upload-preview-grid"></div>
+        <div class="form-group">
+          <label for="upload-collection">Collection (optional)</label>
+          <input type="text" id="upload-collection" placeholder="e.g., Nature, Travel, Portraits" />
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-outline" id="upload-cancel">Cancel</button>
+          <button class="btn btn-primary" id="upload-confirm">
+            <span class="material-icons-round">check</span>
+            Add to Gallery
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section about-section" id="about">
+    <div class="about-container">
+      <div class="about-text fade-in">
+        <p class="section-tagline">About Me</p>
+        <h2 class="section-title">Areeba Kashif</h2>
+        <p class="about-description">
+          Hi there! I'm a creative soul with a passion for capturing the beauty in everyday moments.
+          This portfolio is my personal gallery — a space where I share my photographs, videos,
+          and visual stories with the world.
+        </p>
+        <p class="about-description">
+          Every image tells a story. Every video captures an emotion. Welcome to my visual journey.
+        </p>
+        <div class="about-signature">— Areeba</div>
+      </div>
+      <div class="about-visual fade-in">
+        <div class="about-card">
+          <span class="material-icons-round">auto_awesome</span>
+          <h4>Creative Vision</h4>
+          <p>Turning ordinary moments into extraordinary memories</p>
+        </div>
+        <div class="about-card">
+          <span class="material-icons-round">camera_alt</span>
+          <h4>Photography</h4>
+          <p>Capturing life through a unique perspective</p>
+        </div>
+        <div class="about-card">
+          <span class="material-icons-round">videocam</span>
+          <h4>Videography</h4>
+          <p>Bringing stories to life through motion</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">
+      <span class="material-icons-round">close</span>
+    </button>
+    <button class="lightbox-prev" id="lightbox-prev">
+      <span class="material-icons-round">chevron_left</span>
+    </button>
+    <button class="lightbox-next" id="lightbox-next">
+      <span class="material-icons-round">chevron_right</span>
+    </button>
+    <div class="lightbox-content" id="lightbox-content"></div>
+    <div class="lightbox-info" id="lightbox-info"></div>
+  </div>
+
+  <!-- Toast Notifications -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2026 Areeba Kashif. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/particles.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/upload.js"></script>
+  <script src="js/lightbox.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
